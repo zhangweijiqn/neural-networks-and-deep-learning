@@ -143,5 +143,6 @@ def sigmoid_prime(z):
 if __name__=="__main__":
     import mnist_loader
     training_data,validation_data,test_data = mnist_loader.load_data_wrapper()
-    net = Network([784,30,10])
+    net = Network([784,30,10])  #隐藏层维度30，可以调节
     net.SGD(training_data,30,10,3.0,test_data=test_data)
+    #train_data, 迭代次数，mini-batch数量, 学习速率, test_data。迭代次数，学习速率均可以调节

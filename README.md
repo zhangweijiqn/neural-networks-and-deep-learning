@@ -1,4 +1,7 @@
+
 # Code samples for "Neural Networks and Deep Learning"
+
+# book link: http://neuralnetworksanddeeplearning.com/about.html
 
 This repository contains code samples for my (forthcoming) book on
 "Neural Networks and Deep Learning".
