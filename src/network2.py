@@ -1,6 +1,7 @@
+#coding=utf8
 """network2.py
 ~~~~~~~~~~~~~~
-
+损失函数：交叉熵损失函数
 An improved version of network.py, implementing the stochastic
 gradient descent learning algorithm for a feedforward neural network.
 Improvements include the addition of the cross-entropy cost function,
@@ -330,3 +331,10 @@ def sigmoid(z):
 def sigmoid_prime(z):
     """Derivative of the sigmoid function."""
     return sigmoid(z)*(1-sigmoid(z))
+
+if __name__=="__main__":
+    import mnist_loader
+    training_data,validation_data,test_data = mnist_loader.load_data_wrapper()
+    net = Network([784,100,10],cost=CrossEntropyCost)  #隐藏层维度30，可以调节，100的时候效果会提高到97%
+    # net.large_weight_initializer()  #权重和偏置初始化的另一种方式，使用1/sqrt(n)的方式收敛的会更快
+    net.SGD(training_data,30,10,0.5,evaluation_data=test_data,lmbda =5.0,monitor_evaluation_accuracy=True)

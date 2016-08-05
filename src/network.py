@@ -1,7 +1,8 @@
+#coding=utf8
 """
 network.py
 ~~~~~~~~~~
-
+损失函数： 平方损失函数
 A module to implement the stochastic gradient descent learning
 algorithm for a feedforward neural network.  Gradients are calculated
 using backpropagation.  Note that I have focused on making the code
@@ -89,7 +90,7 @@ class Network(object):
         to ``self.biases`` and ``self.weights``."""
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
-        # feedforward
+        # feedforward, 计算每一层的带权输入
         activation = x
         activations = [x] # list to store all the activations, layer by layer
         zs = [] # list to store all the z vectors, layer by layer
@@ -98,7 +99,7 @@ class Network(object):
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)
-        # backward pass
+        # backward pass, 反向计算每一层的误差
         delta = self.cost_derivative(activations[-1], y) * \
             sigmoid_prime(zs[-1])
         nabla_b[-1] = delta
