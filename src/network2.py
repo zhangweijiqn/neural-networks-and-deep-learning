@@ -1,7 +1,7 @@
 #coding=utf8
 """network2.py
 ~~~~~~~~~~~~~~
-损失函数：交叉熵损失函数
+损失函数增加：交叉熵损失函数，L2规则化，权重初始优化
 An improved version of network.py, implementing the stochastic
 gradient descent learning algorithm for a feedforward neural network.
 Improvements include the addition of the cross-entropy cost function,
@@ -25,7 +25,7 @@ import numpy as np
 #### Define the quadratic and cross-entropy cost functions
 
 class QuadraticCost(object):
-
+    #平方损失函数
     @staticmethod
     def fn(a, y):
         """Return the cost associated with an output ``a`` and desired output
@@ -41,7 +41,7 @@ class QuadraticCost(object):
 
 
 class CrossEntropyCost(object):
-
+    #交叉熵损失函数
     @staticmethod
     def fn(a, y):
         """Return the cost associated with an output ``a`` and desired output
