@@ -334,7 +334,12 @@ def sigmoid_prime(z):
 
 if __name__=="__main__":
     import mnist_loader
-    training_data,validation_data,test_data = mnist_loader.load_data_wrapper()
+    training_data,validation_data,test_data = mnist_loader.load_data_wrapper()  #数组大小分别为(50000, 2),(10000, 2),(10000, 2)，三维数组2包括 (784,10)
+    # np_data = np.array(training_data)
+    # print np_data.shape
+    # print len(np_data[0,0])
     net = Network([784,100,10],cost=CrossEntropyCost)  #隐藏层维度30，可以调节，100的时候效果会提高到97%
     # net.large_weight_initializer()  #权重和偏置初始化的另一种方式，使用1/sqrt(n)的方式收敛的会更快
-    net.SGD(training_data,30,10,0.5,evaluation_data=test_data,lmbda =5.0,monitor_evaluation_accuracy=True)
+    # net.SGD(training_data,30,10,0.5,evaluation_data=test_data,lmbda =5.0,monitor_evaluation_accuracy=True)    #正常调用
+    net.SGD(training_data[:1000],30,10,0.5,lmbda =5.0,evaluation_data=training_data[:100],monitor_evaluation_accuracy=True)  #调试参数
+    #train_data, 迭代次数，mini-batch数量, 学习速率, test_data，规则化因子。
