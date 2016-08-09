@@ -41,6 +41,7 @@ def load_data():
     """
     f = gzip.open('../data/mnist.pkl.gz', 'rb')
     training_data, validation_data, test_data = cPickle.load(f)
+    #cPickle读取的带格式的序列化文件，外面是3个tuple，每个tuple包含2维数组，如train_data第1,2维大小均是50000，该50000个每个是一个784维的数组(len(data[0][0][0]))
     f.close()
     return (training_data, validation_data, test_data)
 
